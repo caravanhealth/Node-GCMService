@@ -15,8 +15,8 @@
     ],
     "dependencies": {
         "attempt": "1.0.1",
-        "debug": "3.1.0",
-        "async": "2.6.0",
+        "debug": "0.7.2",
+        "async": "0.2.9",
         "request": "2.83.0"
     },
     "main": "./libs/index",
