@@ -243,7 +243,7 @@ Sender.prototype._sendJSONRequest = function (options, attemptOptions, message, 
     var self = this;
 
     options['headers']['Content-Type'] = 'application/json; charset=utf-8';
-    options['headers']['Content-length'] = Buffer.byteLength(JSON.stringify(message), 'utf8');
+    // options['headers']['Content-length'] = Buffer.byteLength(JSON.stringify(message), 'utf8');
 
     if (!util.isArray(registration_ids)) return callback(new Error('registration_ids must be an array'));
 
@@ -253,6 +253,7 @@ Sender.prototype._sendJSONRequest = function (options, attemptOptions, message, 
         registration_ids,
         function (array, callback) {
             message['registration_ids'] = array;
+            options['headers']['Content-length'] = Buffer.byteLength(JSON.stringify(message), 'utf8');
             options['body'] = JSON.stringify(message);
 
             debug('HTTP OPTIONS > %s', JSON.stringify(options));
